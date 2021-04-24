@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://calculos.soa.pos.inatel.br" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://calculos.soa.pos.inatel.br" xmlns:intf="http://calculos.soa.pos.inatel.br" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://calculos.soa.pos.inatel.br" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="calculaprazo">
+    <complexType>
+     <sequence>
+      <element name="cepOrign" type="xsd:string"/>
+      <element name="cepDest" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="calculaprazoResponse">
+    <complexType>
+     <sequence>
+      <element name="calculaprazoReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="calculaprazoResponse">
+
+      <wsdl:part element="impl:calculaprazoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="calculaprazoRequest">
+
+      <wsdl:part element="impl:calculaprazo" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="CorreioHigorSilverio">
+
+      <wsdl:operation name="calculaprazo">
+
+         <wsdl:input message="impl:calculaprazoRequest" name="calculaprazoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:calculaprazoResponse" name="calculaprazoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="CorreioHigorSilverioSoapBinding" type="impl:CorreioHigorSilverio">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="calculaprazo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="calculaprazoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="calculaprazoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="CorreioHigorSilverioService">
+
+      <wsdl:port binding="impl:CorreioHigorSilverioSoapBinding" name="CorreioHigorSilverio">
+
+         <wsdlsoap:address location="http://localhost:8080/CalculaPrazo/services/CorreioHigorSilverio"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
